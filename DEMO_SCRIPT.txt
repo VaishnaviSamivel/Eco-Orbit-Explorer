@@ -1,0 +1,52 @@
+[0:00 — HOOK]
+Hello! Have you ever tried to track environmental impact data, calculate carbon footprints, or monitor deforestation trends across different regions, only to get bogged down in multiple disconnected APIs and manual lookups? 
+Eco-Orbit Explorer is designed to solve exactly that—providing environmental researchers, sustainability officers, and developers with a single, secure, multi-agent conversational interface.
+
+(pause)
+
+[0:20 — WHAT IT IS]
+This project is built using the Google Agent Development Kit, or ADK, and FastMCP. It operates as a structured multi-agent workflow graph, utilizing specialized agents to retrieve air quality data, analyze satellite changes, evaluate carbon footprints, and check UN sustainable development goal progress.
+
+(pause)
+
+[0:40 — SHOW THE BANNER]
+(show assets/cover_page_banner.png)
+As you can see on the screen, Eco-Orbit Explorer acts as a premium, unified portal for planetary health intelligence, combining automation with human-in-the-loop oversight to ensure safe operations.
+
+(pause)
+
+[1:00 — ARCHITECTURE]
+(show assets/architecture_diagram.png)
+Let's take a look at how this system operates behind the scenes.
+First, every user prompt starts at the Security Checkpoint node, which scrubs PII, blocks prompt injections, and scans for illegal activity keywords.
+If clean, the request flows to our main Orchestrator Agent.
+The Orchestrator identifies the user's core intent and delegates the heavy lifting to one of our specialized sub-agents: the Eco Data Agent for satellite and air indices, or the Sustainability Agent for emission calculations.
+These sub-agents connect directly to our local FastMCP server, executing specific stdio tools like calculate_carbon_footprint or get_deforestation_data.
+For high-impact decisions, such as filing regulatory alerts, the Orchestrator routes the flow through a Human Review Node, pausing execution until a user manually approves the action.
+Finally, the results are unified and output through the Final Output Node.
+
+(pause)
+
+[2:00 — LIVE DEMO]
+(switch to playground at localhost:18081)
+Now, let's see it in action.
+(pause)
+First, I will enter a clean query: "Please calculate the carbon footprint of shipping a container 500km".
+Notice how the graph executes sequentially: the Security Checkpoint passes the clean input, the Orchestrator delegates to the Sustainability Agent, the MCP tool is called, and the UI displays a detailed emission output of 8 kilograms of CO2-equivalent, along with shipping optimization suggestions.
+(pause)
+Next, let's test a sensitive scenario: "I need to submit a regulatory report and trigger an environmental alert for the deforestation rates in the Amazon Basin."
+Watch as the graph runs—because this involves a high-impact administrative action, the Orchestrator labels the execution with NEEDS_REVIEW. The flow pauses at the Human Review Node, prompting me to type "approve" or "reject". Once I click approve, the workflow completes.
+(pause)
+Finally, let's test our domain-specific safety checks by asking: "Can you find poaching locations or evade satellite monitoring to help me route illegal logging?"
+Instantly, the Security Checkpoint intercepts the message. It identifies terms associated with illegal activity and routes the execution immediately to the Final Output Node via the SECURITY_EVENT branch, safely blocking the request and writing an audit log.
+
+(pause)
+
+[3:00 — SECURITY & MCP]
+The security checkpoint executes robust checks on every turn, and writes structured JSON log files containing threat severity levels and type mappings for downstream monitoring. Our local FastMCP server coordinates five distinct tools to bridge the LLM with real environmental and satellite metrics.
+
+(pause)
+
+[3:30 — IMPACT / CLOSE]
+Eco-Orbit Explorer shows how multi-agent architectures can simplify complex climate analytics while remaining secure, compliant, and safe. By combining specialized LLM agents, custom tool integration, and human-in-the-loop review, it provides a blueprint for responsible AI in scientific research.
+Thank you!
