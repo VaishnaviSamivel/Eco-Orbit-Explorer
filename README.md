@@ -164,7 +164,4 @@ graph TD
 
 ---
 
-## Demo Script
 
-A spoken narration script for demonstration videos, complete with timing highlights and visual cues, is available at:
-[DEMO_SCRIPT.txt](DEMO_SCRIPT.txt)
